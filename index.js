@@ -125,37 +125,184 @@
  * PROMEDIO DE LA CLASE *
  ************************/
 
-students = [
-    {
-      name: "Pedro",
-      grades: [90, 87, 88, 90],
-    },
-    {
-      name: "Jose",
-      grades: [99, 71, 88, 96],
-    },
-    {
-      name: "Maria",
-      grades: [92, 81, 80, 96],
-    },
-  ]
+// students = [
+//     {
+//       name: "Pedro",
+//       grades: [90, 87, 88, 90],
+//     },
+//     {
+//       name: "Jose",
+//       grades: [99, 71, 88, 96],
+//     },
+//     {
+//       name: "Maria",
+//       grades: [92, 81, 80, 96],
+//     },
+//   ]
 
 
-function getStudentAverage(students) {
-    let promedios = []
-    let res = []
-     students.forEach(estudiante => {
-        let promedioEstudiante = (estudiante.grades.reduce((a,b)=>a+b , 0)) / estudiante.grades.length
-        promedios.push(promedioEstudiante)
-        let statsEstudiante = {
-            name:estudiante.name,
-            promedio:promedioEstudiante
-        }
-        res.push(statsEstudiante)
-     })
-     res
-     console.log(res)
-     console.log(promedios)
+// function getStudentAverage(students) {
+//   let promedios = []
+//   let estudiantes = []
+  
+//     students.forEach(estudiante => {
+//       let promedioEstudiante = parseFloat(((estudiante.grades.reduce((a,b)=>a+b , 0)) / estudiante.grades.length).toFixed(2))
+//       promedios.push(promedioEstudiante)
+//       let statsEstudiante = {
+//           name:estudiante.name,
+//           average:promedioEstudiante
+//       }
+//       estudiantes.push(statsEstudiante)
+//     })    
+//     let promedioClase = parseFloat((promedios.reduce((a,b)=>a+b,0)/promedios.length).toFixed(2))
+//     let stats = {
+//       classAverage: promedioClase,
+//       students: estudiantes
+//     }    
+//     return stats
+// }
+
+// getStudentAverage(students)
+
+//platzi
+// export function getStudentAverage(students) {
+//   let promedios = []
+//   let estudiantes = []
+//   students.forEach(estudiante => {
+//     let promedioEstudiante = parseFloat(((estudiante.grades.reduce((a, b) => a + b, 0)) / estudiante.grades.length).toFixed(2))
+//     promedios.push(promedioEstudiante)
+//     let statsEstudiante = {
+//       name: estudiante.name,
+//       average: promedioEstudiante
+//     }
+//     estudiantes.push(statsEstudiante)
+//   })
+//   let promedioClase = parseFloat((promedios.reduce((a, b) => a + b, 0) / promedios.length).toFixed(2))
+//   let stats = {
+//     classAverage: promedioClase,
+//     students: estudiantes
+//   }
+//   return stats
+// }
+
+/************************
+ * PALINDROMO MAS LARGO *
+ ************************/
+const palabra = "racecar1"
+
+function palindromo (palabra) {  
+  let res = false
+  //evaluo si el primer caracter es igual al ultimo
+  if (palabra[0] === palabra[palabra.length-1]) {    
+    //recorro la palabra caracter por caracter
+    for (let i = 1;i < palabra.length-1;i++) {      
+      //evaluo si la letra en la posicion i es igual a la letra en la posicion (largo-i-1)
+      if (palabra[i] === palabra[palabra.length-i-1]){
+        // si coinciden los caracteres asigno true a la variable res
+        res = true
+      }
+      else {
+        // los caracteres no coinciden, asigno false a res
+        res = false
+      }      
+    }
+  }
+  else {
+    // el primer caracter no coincide con el ultimo
+    res = false
+  } 
+  return res
 }
 
-getStudentAverage(students);
+// console.log(palindromo(palabra))
+
+
+
+// function findLargestPalindrome (words){
+  //   let masGrande = ""
+  //   words.map(word=>{
+    //     let res = false
+    //     // console.log(word[0])
+    //     if (word[0] === word[word.length-1]) {    
+      //       //recorro la palabra caracter por caracter
+      //       for (let i = 1;i < word.length-1;i++) {      
+        //         //evaluo si la letra en la posicion i es igual a la letra en la posicion (largo-i-1)
+        //         if (word[i] === word[word.length-i-1]){
+//           // si coinciden los caracteres asigno true a la variable res
+//           res = true
+//         }
+//         else {
+  //           // los caracteres no coinciden, asigno false a res
+  //           res = false
+  //         }      
+  //       }
+  //     }
+  //     else {
+    //       // el primer caracter no coincide con el ultimo
+    //       res = false
+    //     }
+    //     if (res === true){
+      //       if (word.length > 1){
+        //         masGrande = word
+        //       }
+        //     }
+        //     else {
+          //       masGrande = 100
+          //     }    
+          //   })
+          //   console.log(masGrande)  
+          //   return masGrande
+          // }
+          
+          // findLargestPalindrome(words);
+          // console.log(palindromo(palabra))
+          // let res = 'hola'
+          
+// const words = ["racecar", "level", "world", "hello"]
+const words = ["racecar", "level1"]
+// const words = ["racecar"]
+          
+function findLargestPalindrome2 (words){
+  let masGrande = ""
+  let res
+  for (word of words){
+    
+    if (word[0] === word[word.length-1]) {
+      // console.log(word[0]);
+      // console.log(word[word.length-1]);
+
+      //recorro la palabra caracter por caracter
+      for (let i = 1;i < word.length-1;i++) {      
+        //evaluo si la letra en la posicion i es igual a la letra en la posicion (largo-i-1)
+        if (word[i] === word[word.length-i-1]){
+          // si coinciden los caracteres asigno true a la variable res
+          res = true
+        }
+        else {
+          // los caracteres no coinciden, asigno false a res
+          res = false
+        }      
+      }
+    }
+    else {
+      // el primer caracter no coincide con el ultimo
+      res = false
+    }
+    if (res === true){
+      if (word.length > masGrande.length){
+        masGrande = word
+      }
+    }
+        
+  }
+  if (res===true){
+    console.log(masGrande)
+    return masGrande
+  }
+  // else{
+  //   console.log("null")
+  //   return null
+  // }
+}
+
+findLargestPalindrome2(words)
