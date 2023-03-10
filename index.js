@@ -188,121 +188,38 @@
 /************************
  * PALINDROMO MAS LARGO *
  ************************/
-const palabra = "racecar1"
-
-function palindromo (palabra) {  
-  let res = false
-  //evaluo si el primer caracter es igual al ultimo
-  if (palabra[0] === palabra[palabra.length-1]) {    
-    //recorro la palabra caracter por caracter
-    for (let i = 1;i < palabra.length-1;i++) {      
-      //evaluo si la letra en la posicion i es igual a la letra en la posicion (largo-i-1)
-      if (palabra[i] === palabra[palabra.length-i-1]){
-        // si coinciden los caracteres asigno true a la variable res
-        res = true
-      }
-      else {
-        // los caracteres no coinciden, asigno false a res
-        res = false
-      }      
-    }
-  }
-  else {
-    // el primer caracter no coincide con el ultimo
-    res = false
-  } 
-  return res
-}
-
-// console.log(palindromo(palabra))
-
-
+// const words = ["racecar", "level", "world", "hello", "madam", "repaper"]
 
 // function findLargestPalindrome (words){
-  //   let masGrande = ""
-  //   words.map(word=>{
-    //     let res = false
-    //     // console.log(word[0])
-    //     if (word[0] === word[word.length-1]) {    
-      //       //recorro la palabra caracter por caracter
-      //       for (let i = 1;i < word.length-1;i++) {      
-        //         //evaluo si la letra en la posicion i es igual a la letra en la posicion (largo-i-1)
-        //         if (word[i] === word[word.length-i-1]){
-//           // si coinciden los caracteres asigno true a la variable res
-//           res = true
+//     //almacena el palindromo mas largo
+//     let palindromoSupremo = ""
+//     //recorre el arreglo de palabras
+//     words.forEach(word => {
+//         //evalua si la palabra puede ser un palindromo
+//         if (word[0] === word[word.length-1]){
+//             //evalua si es un palindromo
+//             //recorro la palabra caracter por caracter
+//             for (let i = 1;i < word.length;i++){
+//                 //evalua si la letra en la posicion i es igual a la letra en la posicion (largo-i-1)
+//                 if (word[i] === word[word.length-i-1]){
+//                     //si es el ultimo caracter
+//                     if (i == word.length-1){
+//                         //si la palabra es mas larga que el ultimo palindromo almacenado, guarda el nuevo valor
+//                         if (word.length > palindromoSupremo.length){
+//                             palindromoSupremo=""
+//                             palindromoSupremo= word
+//                         }
+//                     }
+//                 }
+//             }
 //         }
-//         else {
-  //           // los caracteres no coinciden, asigno false a res
-  //           res = false
-  //         }      
-  //       }
-  //     }
-  //     else {
-    //       // el primer caracter no coincide con el ultimo
-    //       res = false
-    //     }
-    //     if (res === true){
-      //       if (word.length > 1){
-        //         masGrande = word
-        //       }
-        //     }
-        //     else {
-          //       masGrande = 100
-          //     }    
-          //   })
-          //   console.log(masGrande)  
-          //   return masGrande
-          // }
-          
-          // findLargestPalindrome(words);
-          // console.log(palindromo(palabra))
-          // let res = 'hola'
-          
-// const words = ["racecar", "level", "world", "hello"]
-const words = ["racecar", "level1"]
-// const words = ["racecar"]
-          
-function findLargestPalindrome2 (words){
-  let masGrande = ""
-  let res
-  for (word of words){
-    
-    if (word[0] === word[word.length-1]) {
-      // console.log(word[0]);
-      // console.log(word[word.length-1]);
-
-      //recorro la palabra caracter por caracter
-      for (let i = 1;i < word.length-1;i++) {      
-        //evaluo si la letra en la posicion i es igual a la letra en la posicion (largo-i-1)
-        if (word[i] === word[word.length-i-1]){
-          // si coinciden los caracteres asigno true a la variable res
-          res = true
-        }
-        else {
-          // los caracteres no coinciden, asigno false a res
-          res = false
-        }      
-      }
-    }
-    else {
-      // el primer caracter no coincide con el ultimo
-      res = false
-    }
-    if (res === true){
-      if (word.length > masGrande.length){
-        masGrande = word
-      }
-    }
-        
-  }
-  if (res===true){
-    console.log(masGrande)
-    return masGrande
-  }
-  // else{
-  //   console.log("null")
-  //   return null
-  // }
-}
-
-findLargestPalindrome2(words)
+//     } )
+//     if (palindromoSupremo === "" ){
+//         palindromoSupremo = null
+//         console.log(palindromoSupremo)
+//     }else {
+//         console.log(palindromoSupremo)
+//     }
+//     return palindromoSupremo
+// }
+// findLargestPalindrome(words)
