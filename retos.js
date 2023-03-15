@@ -292,3 +292,56 @@
 //     }
 //   }
 // }
+/******************************************
+ * BUSCAR PERSONA EN UN ARREGLO DE OBJETO *
+ ******************************************/
+// const personas = []
+
+// const crearPersona = (nombre, edad) => {
+//     const persona = {
+//         nombre: nombre, 
+//         edad: edad 
+//     }
+//     personas.push(persona)
+// }
+
+
+// crearPersona('Gustavo Rodriguez',35)
+// crearPersona('Pedro Rodriguez',40)
+// crearPersona('Gabriela Perez',31)
+// crearPersona('Elvira Alvarez',31)
+
+// const mostrarPersonas = () => {
+//     personas.forEach( persona => {
+//         if (personas.indexOf(persona)===0){
+//             console.log(`Esta es una persona ${persona.nombre}`)
+//         }
+//         else if (personas.indexOf(persona) === personas.length-1){
+//             console.log(`Esta es la ultima persona ${persona.nombre}`)
+//         }
+//         else {
+//             console.log(`Esta es otra persona ${persona.nombre}`)
+//         }
+//     } )
+// }
+
+
+// const mostrarUltimoRegistro = () =>{
+//     const index = personas.length-1    
+//     return personas[index]
+// }
+
+// console.log(mostrarUltimoRegistro())
+
+// const buscar = (valor) => {
+//     let res = personas.find(persona => persona.nombre === valor)
+//     if (res === undefined){
+//         console.log('No se ha encontrado')
+//     }
+//     else{
+//         console.log(res)
+//     }
+// }
+
+// mostrarPersonas()
+// buscar('Gustavo')
