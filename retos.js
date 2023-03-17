@@ -417,3 +417,50 @@
 //         }, 2000)
 //     })
 // }
+/**********************
+ * CALLBACK A PROMISE *
+ **********************/
+// export function doTask1() {
+//     return new Promise((resolve) => {
+//       window.setTimeout(() => resolve('Task 1'), 300)
+//     })
+//   }
+  
+//   export function doTask2() {
+//     return new Promise((resolve) => {
+//       window.setTimeout(() => resolve('Task 2'), 300)
+//     })
+//   }
+  
+//   export function doTask3() {
+//     return new Promise((resolve) => {
+//       window.setTimeout(() => resolve('Task 3'), 300)
+//     })
+//   }
+// import { doTask1, doTask2, doTask3 } from './tasks';
+
+// export function runCode() {
+//   const strings = [];
+//   return new Promise((resolve) => {
+//     doTask1()
+//       .then(res => {
+//         strings.push(res)
+//         return doTask2()
+//       })
+//       .then(res => {
+//         strings.push(res)
+//         return doTask3()
+//       })
+//       .then(res => {
+//         strings.push(res)
+//         resolve(strings)
+//       })
+//   })
+/**********************
+ * USANDO ASYNC AWAIT *
+ **********************/
+// import { doTask1, doTask2, doTask3 } from './tasks';
+
+// export async function runCode() {
+//   return [await doTask1(), await doTask2(), await doTask3()]
+// }
