@@ -404,3 +404,16 @@
 //       }
 //     })
 //   }
+/***************************
+ * FUNCION MAIL OPTIMIZADA *
+ ***************************/
+// function sendEmail(email, subject, body){
+//     return new Promise((resolve, reject)=>{
+//         const message = 'Error: Hacen falta campos para enviar el mail'
+//         window.setTimeout(()=>{
+//             [email,subject,body].filter(Boolean).length === 3
+//                 ? resolve({email, subject, body})
+//                 : reject(new Error(message))
+//         }, 2000)
+//     })
+// }
