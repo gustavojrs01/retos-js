@@ -345,3 +345,62 @@
 
 // mostrarPersonas()
 // buscar('Gustavo')
+/***************
+ * ASYNC-AWAIT *
+ ***************/
+// const data = [
+//     {
+//         id:1,
+//         name:'Gustavo'
+//     },
+//     {
+//         id:2,
+//         name:'Victoria'
+//     }
+// ]
+
+
+// const getData = () => new Promise((resolve, reject)=>{
+//     if (data.length === 0) {
+//         reject(new Error('Data is empty'))
+//     }
+//     setTimeout(()=>{
+//         resolve(data)
+//     }, 2000)
+// })
+
+// // getData()
+// //     .then((response)=>{
+// //         console.log(response)
+// //     })
+// //     .catch((error)=>{
+// //         console.log(error.message)
+// //     })
+
+// async function fetchedData(){
+//     const personas = await getData()
+//     console.log(personas)
+// }
+
+// fetchedData()
+/****************************
+ * FUNCION MAIL CON PROMISE *
+ ****************************/
+// export function sendEmail(email = "", subject = "", body = "") {
+//     const mail = {
+//       email: email,
+//       subject: subject,
+//       body: body
+//     }
+//     return new Promise((resolve, reject) => {
+//       if (mail.email === "" || mail.subject === "" || mail.body === "") {
+//         reject(new Error('No se puede enviar, faltan parametros'))
+//       }
+//       else {
+//         window.setTimeout(() => {
+          
+//           resolve(mail)
+//         }, 2000)
+//       }
+//     })
+//   }
