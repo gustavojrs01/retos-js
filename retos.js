@@ -383,3 +383,24 @@
 // }
 
 // fetchedData()
+/****************************
+ * FUNCION MAIL CON PROMISE *
+ ****************************/
+// export function sendEmail(email = "", subject = "", body = "") {
+//     const mail = {
+//       email: email,
+//       subject: subject,
+//       body: body
+//     }
+//     return new Promise((resolve, reject) => {
+//       if (mail.email === "" || mail.subject === "" || mail.body === "") {
+//         reject(new Error('No se puede enviar, faltan parametros'))
+//       }
+//       else {
+//         window.setTimeout(() => {
+          
+//           resolve(mail)
+//         }, 2000)
+//       }
+//     })
+//   }
