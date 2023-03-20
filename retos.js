@@ -464,3 +464,68 @@
 // export async function runCode() {
 //   return [await doTask1(), await doTask2(), await doTask3()]
 // }
+/****************************
+ * VALIDAR USUARIO POR MAIL *
+ ****************************/
+// export function validateForm(formData, registeredUsers) {
+//     const data = [formData]
+//     let camposFaltantes = []
+  
+//     if (!data.every(e => e.hasOwnProperty('name'))) {
+//       camposFaltantes.push('name')
+//     }
+//     if (!data.every(e => e.hasOwnProperty('lastname'))) {
+//       camposFaltantes.push('lastname')
+//     }
+//     if (!data.every(e => e.hasOwnProperty('email'))) {
+//       camposFaltantes.push('email')
+//     }
+//     if (!data.every(e => e.hasOwnProperty('password'))) {
+//       camposFaltantes.push('password')
+//     }
+  
+//     if (camposFaltantes.length > 0) {
+//       throw new Error(`Faltan los siguientes campos:${camposFaltantes}`)
+//       console.log(camposFaltantes)
+//     }
+//     else {
+//       if (registeredUsers.find(e => {
+//         return e.email === data[0].email
+//       })) {
+//         throw new Error(`El email ingresado ya existe: ${data[0].email}`);
+//       }
+//       else {
+//         registeredUsers.push(
+//           {
+//             name: formData.name,
+//             lastname: formData.lastname,
+//             email: formData.email
+//           }
+//         )
+//         return `Tu registro fue exitoso ${formData.name} ${formData.lastname}`
+//       }
+//     }
+  
+//   }
+/*******************************************
+ * AGRUPA PRODUCTOS POR UNA CATEGORIA DADA *
+ *******************************************/
+// export function groupProducts(products, category) {
+//     let filteredProducts = []
+//     let price = 0
+  
+//     products.map(prod => {
+//       if (category.toLowerCase() === prod.category.toLowerCase()) {
+//         filteredProducts.push(prod.name)
+//         price += prod.price
+//       }
+  
+  
+  
+//     })
+  
+//     return {
+//       products: filteredProducts.join(', '),
+//       totalPrice: price
+//     }
+//   }
