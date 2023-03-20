@@ -529,3 +529,13 @@
 //       totalPrice: price
 //     }
 //   }
+/**********************
+ * VERSION OPTIMIZADA *
+ **********************/
+// export function groupProducts(products, category) {
+//     const filtered = products.filter(product => product.category === category);
+//     return {
+//       products: filtered.map(product => product.name).join(", "),
+//       totalPrice: filtered.reduce((acc, val) => acc.price + val.price)
+//     }
+//   }
