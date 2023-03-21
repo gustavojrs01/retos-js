@@ -572,3 +572,19 @@
 //   });
 //   return rta;
 // }
+/*********************************
+ * MODIFICA UNA LISTA DE COMPRAS *
+ *********************************/
+// export function processShoppingList(list) {
+//     let total = 0
+//     list = list.map((obj) => {
+//       if (obj.name.includes('oferta')) {
+//         obj.price *= 0.8
+//       }
+//       total += (obj.price * obj.quantity)
+//       obj.price *= obj.quantity
+//       delete obj.quantity
+//       return obj
+//     })
+//     return total
+//   }
