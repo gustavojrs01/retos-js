@@ -469,8 +469,7 @@
  ****************************/
 // export function validateForm(formData, registeredUsers) {
 //     const data = [formData]
-//     let camposFaltantes = []
-  
+//     let camposFaltantes = []  
 //     if (!data.every(e => e.hasOwnProperty('name'))) {
 //       camposFaltantes.push('name')
 //     }
@@ -482,17 +481,15 @@
 //     }
 //     if (!data.every(e => e.hasOwnProperty('password'))) {
 //       camposFaltantes.push('password')
-//     }
-  
+//     }  
 //     if (camposFaltantes.length > 0) {
 //       throw new Error(`Faltan los siguientes campos:${camposFaltantes}`)
-//       console.log(camposFaltantes)
 //     }
 //     else {
 //       if (registeredUsers.find(e => {
 //         return e.email === data[0].email
 //       })) {
-//         throw new Error(`El email ingresado ya existe: ${data[0].email}`);
+//         throw new Error(`El email ingresado ya existe: ${data[0].email}`)
 //       }
 //       else {
 //         registeredUsers.push(
@@ -504,8 +501,7 @@
 //         )
 //         return `Tu registro fue exitoso ${formData.name} ${formData.lastname}`
 //       }
-//     }
-  
+//     }  
 //   }
 /*******************************************
  * AGRUPA PRODUCTOS POR UNA CATEGORIA DADA *
@@ -519,7 +515,6 @@
 //         filteredProducts.push(prod.name)
 //         price += prod.price
 //       }
-  
   
   
 //     })
@@ -539,3 +534,41 @@
 //       totalPrice: filtered.reduce((acc, val) => acc.price + val.price)
 //     }
 //   }
+/*******************************
+ * UBICACION DEL VALOR BUSCADO *
+ *******************************/
+// export function searchValue(array, value) {
+//     let row
+//     let column
+//     if (!array.flat().includes(value)) {
+//       throw new Error("Valor no encontrado")
+//     }
+//     else {
+//       for (let i = 0; i < array.length; i++) {
+//         if (array[i].includes(value)) {
+//           row = i
+//           column = array[i].indexOf(value)
+//         }
+//       }
+//     }
+//     return {
+//       row,
+//       column
+//     }
+//   }
+/**************
+ * OPTIMIZADO *
+ **************/
+// export function searchValue(array, value)
+// {
+//   let flat = array.flat(1).includes(value);
+//   if (!flat)
+//     throw new Error("Valor no encontrado");
+
+//   let rta;
+//   const result = array.map((array, index) => {
+//     if (array.includes(value))
+//       rta = { row: index, column: array.indexOf(value) }
+//   });
+//   return rta;
+// }
