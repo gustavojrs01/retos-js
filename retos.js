@@ -588,3 +588,9 @@
 //     })
 //     return total
 //   }
+/****************************************************
+ * ORDENA LOS PRODUCTOS POR PRECIO Y DISPONIBILIDAD *
+ ****************************************************/
+// export function sortByAvailabilityAndPrice(products) {
+//     return [...products].sort((a, b) => a.price - b.price).sort((a, b) => b.inStock - a.inStock)
+//   }
