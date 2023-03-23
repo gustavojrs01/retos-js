@@ -116,28 +116,33 @@ function hotelSystem(rooms) {
     if (room.reservs.length === 0){
       hotelRooms[roomNumber-1].reservs.push({
         id,
-        chekIn:formatearFecha(checkIn),
+        checkIn:formatearFecha(checkIn),
         checkOut:formatearFecha(checkOut),
         name
       })
       reservaciones.push(reservation)
     }
     else{
+      
       room.reservs.forEach(res=>{
-        if((formatearFecha(checkIn) >= res.checkIn) && (formatearFecha(checkIn) < res.checkOut)  ){
-          throw new Error('No disponible para esa fecha')
+        if((formatearFecha(checkIn) >= res.checkIn) && (formatearFecha(checkIn) <= res.checkOut)  ){
+          throw new Error('No disponible para esa fecha')                  
         }
-        else {
+        if((formatearFecha(checkIn) < res.checkIn) && (formatearFecha(checkIn) <= res.checkOut)  ){
+          throw new Error('No disponible para esa fecha')                  
+        }
+        // else {
           hotelRooms[roomNumber-1].reservs.push({
             id,
-            checkIn,
-            checkOut,
+            checkIn:formatearFecha(checkIn),
+            checkOut:formatearFecha(checkOut),
             name
           })
           reservaciones.push(reservation)
           console.log('Reservacion agregegada')
-        }
+        // }
       })
+      console.log('estoy en el else')
     } 
   }
 
