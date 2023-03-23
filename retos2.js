@@ -124,7 +124,7 @@ function hotelSystem(rooms) {
     }
     else{
       room.reservs.forEach(res=>{
-        if((formatearFecha(checkIn) >= res.checkIn)   ){
+        if((formatearFecha(checkIn) >= res.checkIn) && (formatearFecha(checkIn) < res.checkOut)  ){
           throw new Error('No disponible para esa fecha')
         }
         else {
