@@ -720,3 +720,17 @@
 //         getAvailableRooms
 //     }   
 //   }
+/************************************
+ * CONGELA EL OBJETO RECURSIVAMENTE *
+ ************************************/
+// export function protectDog(dog) {
+  
+//     const protectedDog = Object.assign({}, dog)
+//     Object.freeze(protectedDog)
+//     for (let x in protectedDog) {
+//       if (typeof protectedDog[x] === 'object') {
+//         Object.freeze(protectedDog[x])
+//       }    
+//     }
+//     return protectedDog
+//   }
