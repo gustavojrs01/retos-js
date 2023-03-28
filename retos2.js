@@ -1,52 +1,148 @@
 function hotelSystem(rooms) {
-  const reserv = [];
+  // Tu código aquí
+  let reservations = [
+    // {
+    //   id: 1,
+    //   name: "John Doe",
+    //   checkIn: "10/01",
+    //   checkOut: "12/01",
+    //   roomNumber: 1,
+    // },
+    // {
+    //   id: 2,
+    //   name: "Jane Doe",
+    //   checkIn: "01/01",
+    //   checkOut: "02/01",
+    //   roomNumber: 2,
+    // },
+  ];
+  const formatearFecha = (date)=> new Date(date.split('/').reverse().join('/'))
   return {
-    searchReservation: id => {
-      const res = reserv.find(reserve => reserve.id === id);
-      if (res) return res;
-      else throw new Error("La reservación no fue encontrada");
+    searchReservation: (id) => {
+      const reservation = reservations.find(reservation => reservation.id === id);
+      if (!reservation) {
+        throw new Error("La reservación no fue encontrada");
+      }
+      return reservation;
     },
     getSortReservations: () => {
-      return [...reserv].sort((reserve1, reserve2) => {
-        if (reserve1.checkIn > reserve2.checkIn) return 1;
-        if (reserve1.checkIn < reserve2.checkIn) return -1;
-        if (reserve1.checkIn === reserve2.checkIn) return 0;
-      });
+      return [...reservations].sort((a, b) => new Date(a.checkIn) - new Date(b.checkIn));    
     },
+    // addReservation: (reservation) => {
+    //   const { checkIn, checkOut, roomNumber } = reservation;
+     
+    //   const isRoomAvailable = reservations.every(reservation => {
+    //     const { checkIn: checkInRes, checkOut: checkOutRes } = reservation;
+    //     console.log(formatearFecha(checkIn), formatearFecha(checkInRes))
+    //     return formatearFecha(checkIn) < formatearFecha(checkInRes) && formatearFecha(checkOut) < formatearFecha(checkInRes) || formatearFecha(checkIn) > formatearFecha(checkOutRes) && formatearFecha(checkOut) > formatearFecha(checkOutRes);
+    //   });
+    //   console.log(isRoomAvailable)
+      
+    //   if (!isRoomAvailable) {
+    //     throw new Error("La habitación no está disponible");
+    //   }
+    //   reservations.push(reservation);
+    //   return "Reservación agregada exitosamente";
+    // },
     addReservation: reservation => {
-      if (reservation.checkIn > reservation.checkOut) {
-        throw new Error("La fecha de llegada no puede ser después de la salida");
+      let {checkIn, checkOut} = reservation
+      checkIn = formatearFecha(checkIn)
+      checkOut = formatearFecha(checkOut)
+      if (checkIn.getTime() === checkOut.getTime()){        
+        throw new Error('La fecha del checkOut no puede ser igual al CheckIn')
       }
-      const isRoomReserved = reserv.filter(reserve =>
-            reserve.checkIn <= reservation.checkOut &&
-            reserve.checkOut >= reservation.checkIn
-          ).some(reserve =>
-            reserve.roomNumber === reservation.roomNumber
-          );
-      if (isRoomReserved) throw new Error("La habitación no está disponible");
-      reserv.push(reservation);
-      return "Reservación registrada exitosamente";
-    },
-    removeReservation: id => {
-      const index = reserv.findIndex(reserve => reserve.id === id);
-      if (index === -1) throw new Error("La reservación que se busca remover no existe");
-      return reserv.splice(index,1)[0];
-    },
-    getReservations: () => reserv,
-    getAvailableRooms: (checkIn, checkOut) => {
-      const availableRooms = [];
-      let index = 0;
-      for (let i = 0; i < rooms; i++) {
-        availableRooms[i] = i + 1;
+      if (checkIn > checkOut){        
+        throw new Error('La fecha del checkIn no puede ser superior al CheckOut')
       }
-      reserv.filter(reserve =>
-        reserve.checkIn <= checkOut &&
-        reserve.checkOut >= checkIn
-      ).forEach(reserve => {
-        index = availableRooms.findIndex(num => reserve.roomNumber === num);
-        if (index != -1) availableRooms.splice(index, 1);
-      });
-      return availableRooms;
+      const isRoomAvailable = [...reservations].every(res=>{
+        const resCheckIn = formatearFecha(res.checkIn)
+        const resCheckOut = formatearFecha(res.checkOut)         
+        if (checkIn < resCheckIn && checkOut <= resCheckOut){
+          return true
+        }
+        if (checkIn >= resCheckOut ){
+          return true
+        }
+        return false
+      })
+      if (isRoomAvailable){
+        reservations.push(reservation)
+        return 'Reserva agregada correctamente'
+      }
+      else {
+        throw new Error('La habitación no está disponible')
+      }
+    },
+    removeReservation: (id) => {
+      const reservation = reservations.find(reservation => reservation.id === id);
+      if (!reservation) {
+        throw new Error("La reservación que se busca remover no existe");
+      }
+      reservations = reservations.filter(reservation => reservation.id !== id);
+      return reservation;
+    },
+    getReservations: () => reservations,
+
+    // getAvailableRooms: (checkInP, checkOutP) => {
+  
+
+    //   let availableRooms = [];
+      
+    //   [...Array(rooms)].forEach((_, index) => {
+    //     const isRoomAvailable = reservations.every((reservation) => {
+    //       if (reservation.roomNumber === index + 1) {
+    //         const { checkIn, checkOut } = reservation;
+    //         return formatearFecha(checkInP) >= formatearFecha(checkOut) || formatearFecha(checkOutP) <= formatearFecha(checkIn);
+    //       }
+    //       return true;
+    //     });
+    //     if (isRoomAvailable) {
+    //       availableRooms.push(index + 1);
+    //     }
+
+    //   });
+    //   return availableRooms;
+    // },
+    getAvailableRooms: (checkIn, checkOut)=>{
+      
+      let availableRooms = []
+      checkIn = formatearFecha(checkIn)
+      checkOut = formatearFecha(checkOut)
+      for(let i = 1;i<=rooms;i++){
+        const disponible = [...reservations].filter(res=>{
+          const resCheckIn = formatearFecha(res.checkIn)
+          const resCheckOut = formatearFecha(res.checkOut)
+          if (res.roomNumber === i){
+            console.log('aqui la room es igual')
+            if (checkIn < resCheckIn && checkOut <= resCheckOut){
+              return true
+            }
+            if (checkIn >= resCheckOut ){
+              return true
+            }
+            return false
+          }
+        })
+        if (disponible){
+          availableRooms.push(i)
+        }            
+      }
+      // const isRoomAvailable = [...reservations].filter(res=>{
+        // const resCheckIn = formatearFecha(res.checkIn)
+        // const resCheckOut = formatearFecha(res.checkOut)
+        // if (checkIn < resCheckIn && checkOut <= resCheckOut){
+        //   return true
+        // }
+        // if (checkIn >= resCheckOut ){
+        //   return true
+        // }
+        // return false
+      // })
+      
+      return availableRooms
     }
   }
+  
 }
+
+const hotel = new hotelSystem(10)

@@ -598,7 +598,9 @@
  * HOTEL SYSTEM *
  ****************/
 // function hotelSystem(rooms) {
-//     const hotelRooms=[]
+//     let hotelRooms=[]
+//     let reservaciones =[]
+//     //Crea un array con las habitaciones
 //     const crearRooms = ()=>{
 //       for (let i = 1;i <= rooms;i++){
 //         const room = {
@@ -608,30 +610,27 @@
 //         hotelRooms.push(room)
 //       }
 //     }
-//     const formatearFecha = (date)=>{
-//       const dateOriginal = date.split('/')
-//       const mes = parseInt(dateOriginal[1])
-//       const dia = parseInt(dateOriginal[0])
-//       const anio = new Date()
-//       const newDate = new Date(`${mes}-${dia}-${anio.getFullYear()}`)
-//       return newDate
-//     }
 //     crearRooms()
-//     let reservaciones =[]
+//     //Formatea la fecha de DD/MM a MM/DD y devuelve un objeto DATE
+//     const formatearFecha = date=> new Date(date.split('/').reverse().join('/'))  
+//     //Devuelve las habitaciones
 //     const getRooms = ()=> hotelRooms
+//     //Devulve el objeto de la habitacion recibiendo el Nro de habitacion
 //     const getRoom = (room)=>{    
 //       if ((room < 1) || (room > hotelRooms.length)){
 //         throw new Error('La habitacion no existe')      
 //       }
 //       return hotelRooms[room-1]
-//     }  
+//     }
+//     //Devulve la reservacion por ID  
 //     const searchReservation = (id)=>{
-//         const reservacion = reservaciones.find((x)=>x.id===id)
+//         const reservacion = reservaciones.find(res=>res.id===id)
 //         if (reservacion) {
 //             return reservacion
 //         }
 //         else throw new Error("La reservación no fue encontrada")        
 //     }
+//     //Devuelve las reservaciones ordenadas de menor a mayor
 //     const getSortReservations = ()=>{
 //       const resOrdenadas = [...reservaciones].sort((res1,res2)=>{
 //         res1 = formatearFecha(res1.checkIn)
@@ -647,36 +646,38 @@
 //       return resOrdenadas
 //     }
 //     const addReservation = (reservation)=>{
-//       const {id, checkIn, checkOut, roomNumber, name} = reservation    
+//       let {id, checkIn, checkOut, roomNumber, name} = reservation
+//       checkIn = formatearFecha(checkIn)
+//       checkOut = formatearFecha(checkOut)
 //       const reservacionesActuales = [...reservaciones]
 //       const room = getRoom(roomNumber) 
 //       if (reservacionesActuales.find(res => res.id === id)){
 //         throw new Error('El id ya existe')
 //       }
-//       if (formatearFecha(checkIn)>formatearFecha(checkOut)){
-//         throw new Error('El checkOut ingresado es menor a la fecha de checkIn')
+//       if (checkIn>checkOut){
+//         throw new Error('El checkOut ingresado es inferior a la fecha de checkIn')
 //       }
 //       if (room.reservs.length === 0){
 //         hotelRooms[roomNumber-1].reservs.push({
 //           id,
-//           checkIn:formatearFecha(checkIn),
-//           checkOut:formatearFecha(checkOut),
+//           checkIn,
+//           checkOut,
 //           name
 //         })
 //         reservaciones.push(reservation)
 //       }
 //       else{      
 //         room.reservs.forEach(res=>{
-//           if((formatearFecha(checkIn) >= res.checkIn) && (formatearFecha(checkIn) <= res.checkOut)  ){
+//           if((checkIn >= res.checkIn) && (checkIn <= res.checkOut)  ){
 //             throw new Error('No disponible para esa fecha')                  
 //           }
-//           if((formatearFecha(checkIn) < res.checkIn) && (formatearFecha(checkIn) <= res.checkOut)  ){
+//           if((checkIn < res.checkIn) && (checkIn <= res.checkOut)  ){
 //             throw new Error('No disponible para esa fecha')                  
 //           }
 //           hotelRooms[roomNumber-1].reservs.push({
 //             id,
-//             checkIn:formatearFecha(checkIn),
-//             checkOut:formatearFecha(checkOut),
+//             checkIn,
+//             checkOut,
 //             name
 //           })
 //           reservaciones.push(reservation)
@@ -693,21 +694,22 @@
 //       const reservacion = [...reservaciones].filter(res=>res.id===id)[0]
 //       reservaciones = reservaciones.filter((res)=>res.id !==id)
 //       return reservacion
-//     }
-  
-//     const getAvailableRooms = (checkIn, checkOut)=>{    
-//       const sinReservas = [...hotelRooms].filter((hab)=>hab.reservs.length===0).map((e)=>e.roomNumber)
+//     }  
+//     const getAvailableRooms = (checkIn, checkOut)=>{
+//       checkIn = formatearFecha(checkIn)
+//       checkOut = formatearFecha(checkOut)       
+//       const sinReservas = [...hotelRooms].filter(room=>room.reservs.length===0).map(reserv=>reserv.roomNumber)
 //       const conReservas =  [...hotelRooms].filter(room=>room.reservs.some(res => {
-//         if ( formatearFecha(checkIn) < res.checkIn && formatearFecha(checkOut)<=res.checkIn){
+//         if ( checkIn < res.checkIn && checkOut<=res.checkIn){
 //           return true
 //         }
-//         if (formatearFecha(checkIn)>=res.checkOut){
+//         if (checkIn>=res.checkOut){
 //           return true
 //         }
 //         return false
-//       })).map(e => e.roomNumber)
-//       return [...sinReservas]
-//       // return [...conReservas,...sinReservas]
+//       })).map(reserv => reserv.roomNumber)
+//       return sinReservas
+//       // return [...conReservas,...sinReservas] SOLUCION REAL
 //     }
 //     return {
 //         searchReservation,
