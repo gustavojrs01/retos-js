@@ -736,3 +736,114 @@
 //     }
 //     return protectedDog
 //   }
+/***********************************
+ * MODIFICA EL PROTOTYPE DE ARRAYS *
+ ***********************************/
+// function arrayModified() {
+//     Array.prototype.myFilter = function (fn){
+//       let rta = []
+//       for (let item of this){
+//         if (fn(item)){
+//           rta.push(item)
+//         }
+//       }    
+//       return rta    
+//     }  
+//   }
+/******************************
+ * CREA UN AUTO USANDO CLASES *
+ ******************************/
+// export class Car {
+//     constructor(brand, model, year, mileage) {
+//       this.brand = brand
+//       this.model = model
+//       this.year = year
+//       this.mileage = mileage
+//       this.state = false
+//     }
+//     turnOn() {
+//       this.state = true
+//       console.log('El auto está encendido')
+//     }
+//     turnOff() {
+//       this.state = false
+//       console.log('El auto está apagado')
+//     }
+//     drive(kilometers) {
+//       if (this.state === false) throw new Error('El auto está apagado')
+//       this.mileage += kilometers
+//     }
+//   }
+/*********************************
+ * CARRITO DE COMPRAS CON CLASES *
+ *********************************/
+// import { Product } from "./product";
+
+// export class Article extends Product {
+//   constructor(name, price, quantity) {
+//     super(name, price, quantity)
+//   }
+//   addToCart() {
+//     return `Agregando ${this.quantity} unidades del articulo ${this.name}`
+//   }
+// }
+
+// export class Service extends Product {
+//   constructor(name, price, quantity) {
+//     super(name, price, quantity)
+//   }
+//   addToCart() {
+//     return `Agregando el servicio ${this.name} al carrito`
+//   }
+// }
+
+// export class Cart {
+//   products=[]
+//   addProduct(product) {
+//     this.products.push(product)
+//     return product.addToCart()
+//   }
+//   deleteProduct(product) {
+//     this.products = this.products.filter(prod => prod.name !== product.name)
+//     return 'Registro eliminado'
+//   }
+//   calculateTotal() {
+//     return this.products.reduce((a,b)=>a+b.price*b.quantity , 0)
+//   }
+//   getProducts() {
+//     return this.products
+//   }
+// }
+/**************************************
+ * ENCAPSULANDO DATOS DE LOS USUARIOS *
+ **************************************/
+// export class User {
+//     constructor(name, age) {
+//       this._name = name
+//       this._age = age
+//       this._friends = []
+//       this._messages = []
+//     }
+//     addFriend(friend) {
+//       this._friends.push(friend)
+//     }
+//     sendMessage(message, friend) {
+//       this._messages.push(message)
+//       friend._messages.push(message)
+//     }
+//     showMessages() {
+//       return this._messages
+//     }
+//     get name() {
+//       return this._name
+//     }
+//     set name(name) {
+//       this._name = name
+//     }
+//     get age(){
+//       return this._age
+//     }
+//     set age(age) {
+//       this._age = age
+//     }
+//   }
