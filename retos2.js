@@ -1,36 +1,28 @@
-export class Animal {
-  constructor(name, age, specie) {
-    this.name = name
-    this.age = age
-    this.specie = specie
+class Persona{
+  constructor(nombre, edad){
+    this.nombre = nombre
+    this.edad = edad
   }
-  getInfo() {
-    return this
+
+  saludar(){
+    console.log(`hola ${this.nombre}`)
   }
 }
 
-export class Mammal extends Animal {
-  constructor(name, age, specie, hasFur) {
-    super(name, age, specie)
-    this.hasFur = hasFur
+const persona1 = new Persona('Gustavo')
+
+// persona1.saludar()
+
+
+class Trabajador extends Persona{
+  constructor(nombre, ocupacion, edad){
+    super(nombre, edad)
+    this.ocupacion = ocupacion
   }
-  getInfo() {
-    return {
-      ...this,
-      ...this.hasFur
-    }
-  }
+  
 }
 
-export class Dog extends Mammal {
-  constructor(name, age, specie = 'dog', breed, hasFur) {
-    super(name, age, specie, hasFur)
-    this.breed = breed
-  }
-  getInfo() {
-    return this
-  }
-  bark() {
-    return 'woof!'
-  }
-}
+
+const persona2 = new Trabajador('Gustavo Rodriguez', 'Programador', 35)
+
+console.log(persona2.edad)
