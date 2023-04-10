@@ -880,3 +880,233 @@
 //       return 'woof!'
 //     }
 //   }
+/********************
+ * AGENDA DE VUELOS *
+ ********************/
+// economicFlights.js
+// import { Flight } from "./Flight";
+// import { Reservation } from "./Reservation";
+
+// export class EconomicFlight extends Flight {
+//   constructor(origin, destination, date, capacity, price) {
+//     super(origin, destination, date, capacity, price);
+//   }
+//   sellTicket(passenger) {
+//     if (this.capacity > 0) {
+//       if (passenger.age < 18 || passenger.age > 65) {
+//         this.price = this.price * 0.8;
+//       }      
+//     }    
+//     return super.sellTicket(passenger)
+//   }
+// }
+// FLight.js
+// import { Reservation } from "./Reservation";
+// export class Flight {
+//   constructor(origin, destination, date, capacity, price) {
+//     this.origin = origin;
+//     this.destination = destination;
+//     this.date = date;
+//     this.capacity = capacity;
+//     this.price = price;
+//     this.passengers = [];
+//   }
+
+//   sellTicket(passenger) {
+//     if (this.capacity > 0) {
+//       this.passengers.push({
+//         fullName: `${passenger.name} ${passenger.lastname}`,
+//         age: passenger.age
+//       });
+//       passenger.addFlight(this);
+//       this.capacity--;
+//       let reservation = new Reservation(this, passenger);
+//       return reservation;    
+//     } 
+//   }
+// }
+// Passenger.js
+// export class Passenger {
+//     constructor(name, lastname, age){
+//       this.name = name;
+//       this.lastname = lastname;
+//       this.age = age;
+//       this.flights = [];
+//     }
+  
+//     addFlight(flight) {
+//       this.flights.push({
+//         origin: flight.origin,
+//         destination: flight.destination,
+//         date: flight.date,
+//         price: flight.price
+//       });
+//     }
+//   }
+// PremiunFlight.js
+// import { Flight } from "./Flight";
+// export class PremiumFlight extends Flight {
+//   constructor(origin, destination, date, capacity, price, specialService) {
+//     super(origin, destination, date, capacity, price)
+//     this.price = price + specialService
+//   }
+// }
+// Reservation.js
+// export class Reservation {
+//     constructor(flight, passenger) {
+//       this.flight = flight;
+//       this.passenger = passenger;
+//     }
+  
+//     reservationDetails() {
+//       return {
+//         origin: this.flight.origin,
+//         destination: this.flight.destination,
+//         date: this.flight.date,
+//         reservedBy: `${this.passenger.name} ${this.passenger.lastname}`
+//       };
+//     }
+//   }
+/************************
+ * SINGLETON EN UN CHAT *
+ ************************/
+// import { User } from "./user";
+
+// export class Chat {
+
+//   constructor() {
+//     if (!Chat.instance) {
+//       this.users = [];
+//       Chat.instance = Object.freeze(this);
+//     }
+//       return Chat.instance;
+//   }
+//   sendMessage(message) {
+//     this.users.forEach(user => user.receiveMessage(message));
+//   }
+//   addUser(user) {
+//     if (user instanceof User) {
+//       this.users.push(user)
+//     }
+//   }
+//   removeUser(name) {
+//     const index = this.users.findIndex(user => user.name === name);
+//     this.users.splice(index, 1);
+//   }
+// }
+/***************************************
+ * PERSONALIZA PRODUCTOS DE UNA TIENDA *
+ ***************************************/
+// ShipingInsurance.js
+
+// import { Product } from "./product";
+
+// export class ShippingInsuranceDecorator extends Product {
+//   constructor(product) {
+//     super();
+//     this.product = product;
+//   }
+
+//   getPrice() {
+//     return this.product.getPrice() + 20
+//   }
+
+//   getDescription() {
+//     return this.product.getDescription() + ' con seguro de envío'
+//   }
+// }
+// WarrantyDecorator.js
+// import { Product } from "./product";
+
+// export class WarrantyDecorator extends Product {
+//   constructor(product) {
+//     super();
+//     this.product = product 
+//   }
+
+//   getPrice() {
+//     return this.product.getPrice() + 20
+//   }
+
+//   getDescription() {
+//     return this.product.getDescription() + ' con garantía'
+//   }
+// }
+// Excercise.js
+// import { Product } from "./product";
+
+// export class BasicProduct extends Product {
+//   constructor(price, description) {
+//     super(price);
+//     this.price = price;
+//     this.description = description;
+//   }
+
+//   getDescription() {
+//     return this.description;
+//   }
+// }
+// Product.js
+// export class Product {
+//     // Este código no debe ser editado ❌
+//     constructor(price) {
+//       this.price = price;
+//     }
+  
+//     getPrice() {
+//       return this.price;
+//     }
+  
+//     getDescription() {
+//       throw new Error("Este método debe ser implementado en las subclases");
+//     }
+//   }
+/*******************************************
+ * MEJORA EL CÓDIGO USANDO BUILDER PATTERN *
+ *******************************************/
+// export class CarBuilder {
+//     // Tu código aquí 👇
+//     constructor(year, model, brand, color, price, isAvailable) {
+//       this.year = 0;
+//       this.model = '';
+//       this.brand = '';
+//       this.color = '';
+//       this.price = 0;
+//       this.isAvailable = false;
+//     }
+  
+//     setYear(year) {
+//       this.year = year;
+//       return this;
+//     }
+//     setModel(model) {
+//       this.model = model;
+//       return this;
+//     }
+//     setBrand(brand) {
+//       this.brand = brand;
+//       return this;
+//     }
+//     setColor(color) {
+//       this.color = color;
+//       return this;
+//     }
+//     setPrice(price) {
+//       this.price = price;
+//       return this;
+//     }
+//     setIsAvailable(isAvailable) {
+//       this.isAvailable = isAvailable;
+//       return this;
+//     }
+//     build() {
+//       return {
+//         year: this.year,
+//         model: this.model,
+//         brand: this.brand,
+//         color: this.color,
+//         price: this.price,
+//         isAvailable: this.isAvailable
+//       }
+//     }
+//   }

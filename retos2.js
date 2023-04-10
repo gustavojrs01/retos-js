@@ -25,4 +25,4 @@ class Trabajador extends Persona{
 
 const persona2 = new Trabajador('Gustavo Rodriguez', 'Programador', 35)
 
-console.log(persona2.edad)
+persona2.saludar()
