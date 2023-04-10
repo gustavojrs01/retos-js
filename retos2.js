@@ -1,17 +1,3 @@
-class Persona{
-  constructor(nombre, edad){
-    this.nombre = nombre
-    this.edad = edad
-  }
-
-  saludar(){
-    console.log(`hola ${this.nombre}`)
-  }
-}
-
-const persona1 = new Persona('Gustavo')
-
-// persona1.saludar()
 
 
 class Trabajador extends Persona{
@@ -25,4 +11,4 @@ class Trabajador extends Persona{
 
 const persona2 = new Trabajador('Gustavo Rodriguez', 'Programador', 35)
 
-persona2.saludar()
+console.log(persona2.edad)
