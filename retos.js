@@ -1110,3 +1110,171 @@
 //       }
 //     }
 //   }
+/***********************************
+ * PROXY EN SERVICIO DE MENSAJERÍA *
+ ***********************************/
+// User.js
+// export class User {
+//     constructor(name) {
+//       this.name = name;
+//       this.isLogin = false;
+//     }
+  
+//     login() {
+//       this.isLogin = true;
+//     }
+  
+//     logout() {
+//       this.isLogin = false;
+//     }
+  
+//     isLoggedIn() {
+//       return this.isLogin;
+//     }
+//   }
+// Exercise.js
+// export class MessagesProxy {
+//     constructor(messages, user) {
+//       this.messages = messages;
+//       this.user = user;
+//     }
+  
+//     sendMessage(text) {
+//       if (!this.user.isLoggedIn()) {
+//         throw new Error('Usuario no registrado')
+//       }
+//       this.messages.sendMessage(text);
+//     }
+  
+//     getHistory() { 
+//       if (!this.user.isLoggedIn()) {
+//         throw new Error('Usuario no registrado')
+//       }
+//       return this.messages.getHistory();
+//      }
+//   }
+// MessagesProxy.js
+// export class Messages {
+//     // No debes editar este código ❌
+//     constructor() {
+//       this.history = [];
+//     }
+  
+//     sendMessage(text) {
+//       this.history.push(text);
+//     }
+  
+//     getHistory() {
+//       return this.history;
+//     }
+//   }
+/**********************************************
+ * IMPLEMENTACIÓN DE OBSERVADOR EN NEWSLETTER *
+ **********************************************/
+// Subscriber.js
+// export class Subscriber {
+//     constructor(email) {
+//       this.email = email;
+//     }  
+//     receive(article) {
+//       console.log(`El suscriptor ${this.email} ha recibido el articulo: ${article.title}`)
+//     }
+//   }
+// Exercise.js
+// export class Newsletter {
+//     constructor() {
+//       this.subscribers = [];    
+//     }
+//     subscribe(subscriber) {
+//       this.subscribers.push(subscriber);
+//     }
+  
+//     unsubscribe(email) {
+//       const index = this.subscribers.findIndex(sub=>sub.email === email)
+//       if (index !== -1) {
+//         this.subscribers.splice(index, 1);
+//       }
+//     }
+//     post(article) {
+//       this.subscribers.forEach(sub => {
+//         sub.receive(article)
+//       })
+//     }
+//   }
+/*********************************************
+ * CREA TU PROPIA IMPLEMENTACIÓN DE UN ARRAY *
+ *********************************************/
+// export class MyArray {
+//     constructor() {
+//       this.data = {};
+//       this.length = 0;
+//     }
+  
+//     map(func) {
+//       let newData = new MyArray;
+//       for (let item in this.data) {
+//         newData.data[item] = func(this.data[item]);
+//         newData.length++;
+//       }
+//       return newData;
+//     }
+  
+//     filter(func) {
+//       let filtro = new MyArray;
+//       for (let item in this.data) {
+//         if (func(this.data[item])) {
+//           filtro.data[filtro.length] = this.data[item];
+//           filtro.length++;
+//         }
+//       }
+//       return filtro;
+//     }
+  
+//     push(item) {
+//       this.data[this.length] = item;
+//       this.length++;
+//     }
+  
+//     pop() {
+//       const borrar = this.data[this.length - 1]
+//       delete this.data[this.length - 1];
+//       this.length--;
+//       return borrar;
+//     }
+  
+//     join(character = ",") {
+//       let cadena = "";
+//       for (let i = 0; i < this.length; i++){
+//         if (i < this.length - 1) {
+//           cadena += this.data[i] + character
+//         }
+//         else {
+//           cadena += this.data[i]
+//         } 
+//       }
+//       return cadena;
+//     }
+  
+//     shift() {
+//       const borrar = this.data[0]
+//       delete this.data[0]
+//       this.length--;
+//       for (let i = 0; i < this.length; i++) {
+//         this.data[i] = this.data[i + 1]
+//       }
+//       delete this.data[this.length]
+//       return borrar;
+//     }
+  
+//     unshift(item) {
+//       if (!item && item !== 0) { return this.length }
+//       for (let i = this.length; i >= 0; i--) {
+//         this.data[i] = this.data[i - 1]
+//       }
+//       this.data[0] = item
+//       this.length++
+//       console.log(this)
+//       return this.length
+//     }
+    
+//   }
