@@ -1278,3 +1278,87 @@
 //     }
     
 //   }
+/**************************************************
+ * IMPLEMENTACIÓN DE UNA HASHTABLE PARA CONTACTOS *
+ **************************************************/
+// export class ContactList {
+//   constructor(size) {
+//     this.buckets = new Array(size);
+//     this.numBuckets = this.buckets.length;
+//   }
+
+//   hash(name) {
+//     let total = 0;
+//     for (let i = 0; i < name.length; i++) {
+//       total += name.charCodeAt(i);
+//     }
+//     return total % this.numBuckets;
+//   }
+
+//   insert(name, phone) {
+//     const index = this.hash(name);
+//     if (!this.buckets[index]) {
+//       this.buckets[index] = [];
+//     }
+//     this.buckets[index].push([name, phone]);
+//   }
+
+//   get(name) {
+//     const index = this.hash(name);
+//     if (!this.buckets[index]) {
+//       return null;
+//     }
+//     for (let i = 0; i < this.buckets[index].length; i++) {
+//       if (this.buckets[index][i][0] === name) {
+//         return this.buckets[index][i][1];
+//       }
+//     }    
+//   }
+
+//   retrieveAll() {
+//     let allValues = [];
+//     for (let i = 0; i < this.numBuckets; i++) {
+//       if (this.buckets[i]) {
+//         for (let j = 0; j < this.buckets[i].length; j++) {
+//           allValues.push(this.buckets[i][j]);
+//         }
+//       }
+//     }
+//     return allValues;
+//   }
+
+//   delete(name) {
+//     const index = this.hash(name);
+//     if (!this.buckets[index]) {
+//       return null;
+//     }
+//     this.buckets.splice(index, 1);
+//   }
+// }
+/***********************************
+ * REMUEVE DUPLICADOS DE UNA LISTA *
+ ***********************************/
+// export function removeDuplicates(values) {
+//   let set = new Set(values)
+//   return [...set]
+// }
+/*********************************
+ * CREA UN ORGANIZADOR DE TAREAS *
+ *********************************/
+// export function taskManager() {
+//   const tasks = new Map();
+//   return {
+//     addTask(task, tags) {
+//       const taskmin = task.toLowerCase();
+//       if (!tasks.has(taskmin)) {
+//         tasks.set(taskmin, new Set(tags));
+//       }
+//       else {
+//         tags.forEach(tag => tasks.get(task).add(tag));
+//       }      
+//     },
+//     printTasks() {
+//       return tasks;
+//     }
+//   }
+// }
